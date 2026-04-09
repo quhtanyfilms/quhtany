@@ -3,150 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yango Style Library</title>
+    <title>مكتبتي الاحترافية</title>
     <script src="https://telegram.org"></script>
     <style>
-        :root {
-            --primary-color: #FFD700; /* اللون الأصفر الذهبي */
-            --bg-color: #0b0b0b;
-            --card-bg: #1a1a1a;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-
-        /* الهيدر */
-        header {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--primary-color);
-            letter-spacing: 1px;
-        }
-
-        /* سيكشن الأفلام */
-        .section-title {
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .movie-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-            gap: 12px;
-            padding: 0 20px 20px;
-        }
-
-        .movie-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        .movie-card:active {
-            transform: scale(0.95);
-        }
-
-        .movie-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-
-        .movie-info {
-            padding: 8px;
-            font-size: 12px;
-            text-align: center;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .download-btn {
-            background: var(--primary-color);
-            color: black;
-            border: none;
-            width: 100%;
-            padding: 6px 0;
-            font-weight: bold;
-            font-size: 11px;
-            cursor: pointer;
-        }
-
-        /* شريط سفري بسيط */
-        footer {
-            height: 50px;
-            text-align: center;
-            font-size: 10px;
-            color: #555;
-            padding-top: 20px;
-        }
+        :root { --primary: #FFD700; --bg: #0b0b0b; --card: #1a1a1a; }
+        body { background-color: var(--bg); color: white; font-family: sans-serif; margin: 0; padding: 15px; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .logo { color: var(--primary); font-size: 22px; font-weight: bold; }
+        
+        .movie-container { display: grid; grid-template-columns: 1fr; gap: 15px; }
+        .movie-card { background: var(--card); border-radius: 15px; overflow: hidden; display: flex; flex-direction: row; height: 160px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .movie-card img { width: 110px; height: 100%; object-fit: cover; }
+        .movie-details { padding: 12px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .movie-title { font-size: 16px; font-weight: bold; margin-bottom: 5px; color: var(--primary); }
+        .movie-desc { font-size: 12px; color: #aaa; line-height: 1.4; height: 50px; overflow: hidden; }
+        
+        .buttons { display: flex; gap: 10px; margin-top: 10px; }
+        .btn { flex: 1; border: none; padding: 8px; border-radius: 5px; font-weight: bold; font-size: 12px; cursor: pointer; transition: 0.2s; }
+        .watch-btn { background: var(--primary); color: black; }
+        .down-btn { background: #333; color: white; }
+        .btn:active { transform: scale(0.95); }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">مكتبتي</div>
-        <div style="font-size: 12px; color: #aaa;">مشاهدة أوفلاين</div>
+        <div class="logo">قحطاني فيلم</div>
+        <div style="font-size: 10px; color: #777;">جودة عالية • بدون نت</div>
     </header>
 
-    <div class="section-title">أحدث الإضافات</div>
-    
     <div class="movie-container">
-        <!-- كارت فيلم 1 -->
-        <div class="movie-card" onclick="orderMovie('M001')">
-            <img src="https://tmdb.org" alt="فيلم">
-            <div class="movie-info">فيلم الأكشن 1</div>
-            <button class="download-btn">تحميل</button>
+        <!-- فيلم رقم 1 -->
+        <div class="movie-card">
+            <img src="https://placeholder.com" alt="بوستر">
+            <div class="movie-details">
+                <div class="movie-title">فيلم الأكشن والسرعة</div>
+                <div class="movie-desc">تدور أحداث الفيلم حول مطاردات مثيرة في شوارع المدينة لإنقاذ الفريق من خطر محقق..</div>
+                <div class="buttons">
+                    <button class="btn watch-btn" onclick="sendAction('watch_001')">مشاهدة</button>
+                    <button class="btn down-btn" onclick="sendAction('down_001')">تحميل</button>
+                </div>
+            </div>
         </div>
 
-        <!-- كارت فيلم 2 -->
-        <div class="movie-card" onclick="orderMovie('M002')">
-            <img src="https://tmdb.org" alt="فيلم">
-            <div class="movie-info">فيلم الدراما 2</div>
-            <button class="download-btn">تحميل</button>
-        </div>
-
-        <!-- كارت فيلم 3 -->
-        <div class="movie-card" onclick="orderMovie('M003')">
-            <img src="https://tmdb.org" alt="فيلم">
-            <div class="movie-info">مسلسل جديد 1</div>
-            <button class="download-btn">تحميل</button>
-        </div>
+        <!-- كرر هذا الجزء لكل فيلم جديد -->
     </div>
-
-    <footer>حقوق النشر محفوظة للبوت الخاص بك</footer>
 
     <script>
         const tg = window.Telegram.WebApp;
-        tg.expand(); // لجعل الواجهة تفتح بكامل الشاشة
+        tg.expand();
 
-        function orderMovie(id) {
-            // إرسال كود الفيلم للبوت ليقوم البوت بإرسال الملف للمستخدم
-            tg.sendData(id); 
-            tg.close(); // غلق الواجهة بعد الاختيار (اختياري)
+        function sendAction(action) {
+            tg.sendData(action); // يرسل الأمر للبوت
         }
     </script>
 </body>
-  </html>
+                </html>
+
